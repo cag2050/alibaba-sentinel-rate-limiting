@@ -25,10 +25,9 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -38,10 +37,20 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--Spring Cloud Alibaba 与 Spring Boot、Spring Cloud 版本对应关系：
+            https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <!-- 在dependencyManagement中已经引入了版本，上面的spring-cloud-starter-alibaba-sentinel就不用指定具体版本了-->
+                <version>2.1.1.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
